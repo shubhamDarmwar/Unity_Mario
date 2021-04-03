@@ -8,6 +8,8 @@ TagManager:
   - FallDetector
   - Checkpoint
   - PlayerTag
+  - Coin
+  - Bomb
   layers:
   - Default
   - TransparentFX

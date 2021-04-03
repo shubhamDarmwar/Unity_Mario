@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
@@ -19,6 +20,10 @@ public class PlayerController : MonoBehaviour
     public Vector3 respawnPoint;
     public LevelManager levelManager;
 
+
+    public Text scoreText;
+    private int score = 0;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -27,6 +32,7 @@ public class PlayerController : MonoBehaviour
         originalScale = transform.localScale.x;
         respawnPoint = transform.position;
         levelManager = FindObjectOfType<LevelManager>();
+        scoreText.text = "Score: " + score.ToString();
 
     }
 
@@ -58,7 +64,9 @@ public class PlayerController : MonoBehaviour
         
     }
 
-
+    void FixedUpdate() {
+    	scoreText.text = "Score: " + score.ToString();
+    }
     void OnTriggerEnter2D(Collider2D other) {
         
     	if (other.tag == "FallDetector") {
@@ -69,6 +77,10 @@ public class PlayerController : MonoBehaviour
         else if (other.tag == "Checkpoint") {
             respawnPoint = other.transform.position;
             print("Checkpoint");
+        } else if (other.tag == "Coin") {
+        	score += 1;
+        } else if (other.tag == "Bomb") {
+        	levelManager.respawn();
         }
     }
 }

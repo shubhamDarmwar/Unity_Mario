@@ -12,12 +12,18 @@ public class CameraController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        print("Camera start");
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (player == null) {
+            print("Camera update");
+             // FindObjectOfType<PlayerController>();
+            player = GameObject.FindGameObjectsWithTag("PlayerTag")[0]; 
+        }
+        
         playerPosition = new Vector3(player.transform.position.x, player.transform.position.y, transform.position.z);
         if (player.transform.localScale.x > 0f) {
         	playerPosition = new Vector3(playerPosition.x + offset, playerPosition.y + 2, playerPosition.z);

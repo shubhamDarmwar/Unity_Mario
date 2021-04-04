@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class LevelManager : MonoBehaviour
 {
@@ -23,6 +24,10 @@ public class LevelManager : MonoBehaviour
     	gamePlayer.transform.position =  gamePlayer.respawnPoint;
     	gamePlayer.gameObject.SetActive(true);
     } 
+
+    public void changeLevel(int level) {
+        SceneManager.LoadScene(level);
+    }
 }
 
 

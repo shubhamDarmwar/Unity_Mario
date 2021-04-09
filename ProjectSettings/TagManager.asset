@@ -11,6 +11,9 @@ TagManager:
   - Coin
   - Bomb
   - LevelEnd
+  - ScoreText
+  - AudioSource
+  - LevelText
   layers:
   - Default
   - TransparentFX

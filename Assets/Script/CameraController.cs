@@ -19,7 +19,6 @@ public class CameraController : MonoBehaviour
     void Update()
     {
         if (player == null) {
-            print("Camera update");
              // FindObjectOfType<PlayerController>();
             player = GameObject.FindGameObjectsWithTag("PlayerTag")[0]; 
         }

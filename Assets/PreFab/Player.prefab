@@ -44,7 +44,6 @@ GameObject:
   - component: {fileID: 2011469454392971060}
   - component: {fileID: 2011469454392971061}
   - component: {fileID: 689768631}
-  - component: {fileID: 689768634}
   m_Layer: 0
   m_Name: Player
   m_TagString: PlayerTag
@@ -158,10 +157,12 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 256
   respawnPoint: {x: 0, y: 0, z: 0}
-  levelManager: {fileID: 0}
   scoreText: {fileID: 0}
   audioSource: {fileID: 0}
-  audioClip: {fileID: 0}
+  coinAudioClip: {fileID: 8300000, guid: 5ac6242608b593342802f2c42954d298, type: 3}
+  blastAudioClip: {fileID: 8300000, guid: 7020f67507d2c0c48b4e7a2449bfad82, type: 3}
+  jumpAudioClip: {fileID: 8300000, guid: 6e110ee569cc23148a024775e450f04f, type: 3}
+  checkPointAudioClip: {fileID: 8300000, guid: a88f95669e5710245880b9d6998805d9, type: 3}
 --- !u!95 &2011469454392971061
 Animator:
   serializedVersion: 3
@@ -230,29 +231,3 @@ PolygonCollider2D:
       - {x: -0.065, y: -0.675}
       - {x: -0.074999996, y: -0.575}
       - {x: 0.085, y: -0.73499995}
---- !u!61 &689768634
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2011469454392971071}
-  m_Enabled: 0
-  m_Density: 1
-  m_Material: {fileID: 6200000, guid: b41c1bc9d36d74da8973ad0f00ce4874, type: 2}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: -0.0043037534, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1.45, y: 1.47}
-    newSize: {x: 0.64, y: 0.64}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 1.4413925, y: 1.47}
-  m_EdgeRadius: 0

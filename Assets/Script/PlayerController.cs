@@ -24,9 +24,7 @@ public class PlayerController : MonoBehaviour
 
     //Score
     public Text scoreText;
-    public Text levelText;
     private int score = 0;
-    private int currentLevel = 0;
 
     // Audio 
     private AudioSource audioSource;
@@ -39,14 +37,13 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         DontDestroyOnLoad(gameObject);
-        print("Player start");
     	rigidBody = GetComponent<Rigidbody2D>(); 
         playerAnimator = GetComponent<Animator>();
         originalScale = transform.localScale.x;
         respawnPoint = transform.position;
         levelManager = FindObjectOfType<LevelManager>();
         // scoreText = GameObject.FindGameObjectsWithTag("ScoreText")[0].GetComponent<Text>(); 
-        scoreText.text = "Score: " + score.ToString();
+        // scoreText.text = "Score: " + score.ToString();
         
         audioSource = GameObject.FindGameObjectsWithTag("AudioSource")[0].GetComponent<AudioSource>();
         
@@ -88,9 +85,6 @@ public class PlayerController : MonoBehaviour
         if (scoreText == null) {
             scoreText = GameObject.FindGameObjectsWithTag("ScoreText")[0].GetComponent<Text>(); 
         }
-        if (levelText == null) {
-            levelText = GameObject.FindGameObjectsWithTag("LevelText")[0].GetComponent<Text>(); 
-        }
         if (levelManager == null) {
             levelManager = FindObjectOfType<LevelManager>();
         }
@@ -116,9 +110,7 @@ public class PlayerController : MonoBehaviour
             audioSource.Play();
         } else if (other.tag == "LevelEnd") {
 
-            levelManager.changeLevel(currentLevel + 1);
-            currentLevel = currentLevel + 1;
-            levelText.text = (currentLevel + 1).ToString();
+            levelManager.changeLevel();
         }
     }
 }

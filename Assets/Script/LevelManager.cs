@@ -8,8 +8,8 @@ public class LevelManager : MonoBehaviour
 {
 	public float respawnDelay;
 	private PlayerController gamePlayer;
-    private Vector3 level1StartPoint = new Vector3(-20.38f, 1.0f, 0.0f);
-    private Vector3 level2StartPoint = new Vector3(-8.38f, 2.0f, 0.0f);
+    private Vector3 level1StartPoint = new Vector3(0f, 0f, 0.0f);
+    private Vector3 level2StartPoint = new Vector3(0f, 0f, 0.0f);
     private Vector3 level3StartPoint = new Vector3(0f, 0f, 0.0f);
     private Text levelText;
     private int currentLevel = 0;
@@ -40,7 +40,7 @@ public class LevelManager : MonoBehaviour
 
     public void changeLevel() {
         currentLevel = currentLevel + 1;
-        Vector3 startPoint = new Vector3(-20.38f, 1.0f, 0.0f);
+        Vector3 startPoint = new Vector3(0f, 0f, 0.0f);
         if (currentLevel == 1){
                 startPoint = level1StartPoint;
             } else if (currentLevel == 2) {

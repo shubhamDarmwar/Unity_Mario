@@ -93,7 +93,6 @@ public class PlayerController : MonoBehaviour
     void OnTriggerEnter2D(Collider2D other) {
         
     	if (other.tag == "FallDetector") {
-            print("FallDetector");
             levelManager.respawn();
     	} else if (other.tag == "Checkpoint") {
             audioSource.clip = checkPointAudioClip;
@@ -111,6 +110,12 @@ public class PlayerController : MonoBehaviour
         } else if (other.tag == "LevelEnd") {
 
             levelManager.changeLevel();
+        } else if (other.tag == "FireBall") {
+            levelManager.respawn();
+        } else if (other.tag == "Ghost") {
+            levelManager.respawn();
+        } else if (other.tag == "Saw") {
+            levelManager.respawn();
         }
     }
 }

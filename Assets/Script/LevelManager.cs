@@ -25,7 +25,7 @@ public class LevelManager : MonoBehaviour
         if (levelText == null) {
             levelText = GameObject.FindGameObjectsWithTag("LevelText")[0].GetComponent<Text>(); 
         }
-        levelText.text = "Level: " + (currentLevel + 1).ToString();
+        levelText.text = "Level: " + SceneManager.GetActiveScene().buildIndex.ToString();
     }
     public void respawn() {
     	StartCoroutine("respawnCoroutine");
@@ -39,15 +39,15 @@ public class LevelManager : MonoBehaviour
     } 
 
     public void changeLevel() {
-        currentLevel = currentLevel + 1;
-        Vector3 startPoint = new Vector3(0f, 0f, 0.0f);
-        if (currentLevel == 1){
-                startPoint = level1StartPoint;
-            } else if (currentLevel == 2) {
-                startPoint = level2StartPoint;
-            } else if (currentLevel == 3) {
-                startPoint = level3StartPoint;
-            }
+        currentLevel = SceneManager.GetActiveScene().buildIndex + 1;
+        Vector3 startPoint = level1StartPoint;
+        // if (currentLevel == 1){
+        //         startPoint = level1StartPoint;
+        //     } else if (currentLevel == 2) {
+        //         startPoint = level2StartPoint;
+        //     } else if (currentLevel == 3) {
+        //         startPoint = level3StartPoint;
+        //     }
         
         gamePlayer.respawnPoint = startPoint;
         gamePlayer.transform.position = startPoint;

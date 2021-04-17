@@ -42,9 +42,6 @@ public class PlayerController : MonoBehaviour
         originalScale = transform.localScale.x;
         respawnPoint = transform.position;
         levelManager = FindObjectOfType<LevelManager>();
-        // scoreText = GameObject.FindGameObjectsWithTag("ScoreText")[0].GetComponent<Text>(); 
-        // scoreText.text = "Score: " + score.ToString();
-        
         audioSource = GameObject.FindGameObjectsWithTag("AudioSource")[0].GetComponent<AudioSource>();
         
 
@@ -82,14 +79,15 @@ public class PlayerController : MonoBehaviour
     }
 
     void FixedUpdate() {
-        if (scoreText == null) {
-            scoreText = GameObject.FindGameObjectsWithTag("ScoreText")[0].GetComponent<Text>(); 
-        }
         if (levelManager == null) {
             levelManager = FindObjectOfType<LevelManager>();
         }
-    	scoreText.text = "Score: " + score.ToString();
+        if (GameObject.FindGameObjectsWithTag("ScoreText").Length > 0){
+            GameObject.FindGameObjectsWithTag("ScoreText")[0].GetComponent<TMPro.TextMeshProUGUI>().text = "Score: " + score.ToString();
+        }
+        
     }
+
     void OnTriggerEnter2D(Collider2D other) {
         
     	if (other.tag == "FallDetector") {
@@ -100,7 +98,7 @@ public class PlayerController : MonoBehaviour
             
             respawnPoint = other.transform.position;
         } else if (other.tag == "Coin") {
-        	score += 1;
+        	score += 10;
             audioSource.clip = coinAudioClip;
             audioSource.Play();
         } else if (other.tag == "Bomb") {

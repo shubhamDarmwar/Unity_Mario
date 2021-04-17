@@ -637,18 +637,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0ddf6b1f8846a4c75907c48d1621f381, type: 3}
---- !u!114 &172692958 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 8635306761634373721, guid: 242c7a64089d343e1bf117d84fa0a9cc,
-    type: 3}
-  m_PrefabInstance: {fileID: 8635306761805755783}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &186411140
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6488,6 +6476,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   respawnDelay: 2
+  transition: {fileID: 0}
+  transitionTime: 1
 --- !u!4 &1330039193
 Transform:
   m_ObjectHideFlags: 0
@@ -10657,7 +10647,7 @@ PrefabInstance:
         type: 3}
       propertyPath: scoreText
       value: 
-      objectReference: {fileID: 172692958}
+      objectReference: {fileID: 0}
     - target: {fileID: 2011469454392971060, guid: 279907d6c9f75479f82f7f8774a6a40d,
         type: 3}
       propertyPath: audioSource
@@ -11979,12 +11969,12 @@ PrefabInstance:
     - target: {fileID: 8514004806149991991, guid: fde1a0c806c9241079b36945c4a792c5,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 6.6699996
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 8514004806149991991, guid: fde1a0c806c9241079b36945c4a792c5,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -3.4
+      value: -4.2
       objectReference: {fileID: 0}
     - target: {fileID: 8514004806149991991, guid: fde1a0c806c9241079b36945c4a792c5,
         type: 3}

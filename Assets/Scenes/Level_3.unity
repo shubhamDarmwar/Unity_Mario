@@ -8627,7 +8627,7 @@ PrefabInstance:
     - target: {fileID: 8514004806149991991, guid: fde1a0c806c9241079b36945c4a792c5,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 7.2
+      value: -3
       objectReference: {fileID: 0}
     - target: {fileID: 8514004806149991991, guid: fde1a0c806c9241079b36945c4a792c5,
         type: 3}
@@ -20297,6 +20297,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   respawnDelay: 2
+  transition: {fileID: 0}
+  transitionTime: 1
 --- !u!4 &1907937932
 Transform:
   m_ObjectHideFlags: 0

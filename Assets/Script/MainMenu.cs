@@ -12,8 +12,8 @@ public class MainMenu : MonoBehaviour
 
     public void playGame() {
     	print("playGame");
-    	SceneManager.LoadScene(4);
-    	// levelManager.changeLevel();
+    	// SceneManager.LoadScene(4);
+    	levelManager.changeLevel();
     }
 
     public void quitGame() {

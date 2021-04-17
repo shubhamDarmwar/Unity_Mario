@@ -7,26 +7,30 @@ using UnityEngine.SceneManagement;
 public class LevelManager : MonoBehaviour
 {
 	public float respawnDelay;
+    public Animator transition;
+    public float transitionTime = 1f;
+
 	private PlayerController gamePlayer;
     private Vector3 level1StartPoint = new Vector3(0f, 0f, 0.0f);
     private Vector3 level2StartPoint = new Vector3(0f, 0f, 0.0f);
     private Vector3 level3StartPoint = new Vector3(0f, 0f, 0.0f);
     private Text levelText;
     private int currentLevel = 0;
+
     // Start is called before the first frame update
     void Start()
     {
         DontDestroyOnLoad(gameObject);
-        gamePlayer = FindObjectOfType<PlayerController>();
-        levelText = GameObject.FindGameObjectsWithTag("LevelText")[0].GetComponent<Text>(); 
+        gamePlayer = FindObjectOfType<PlayerController>(); 
     }
 
     void FixedUpdate() {
-        if (levelText == null) {
-            levelText = GameObject.FindGameObjectsWithTag("LevelText")[0].GetComponent<Text>(); 
+        if (GameObject.FindGameObjectsWithTag("LevelText").Length > 0){
+            GameObject.FindGameObjectsWithTag("LevelText")[0].GetComponent<TMPro.TextMeshProUGUI>().text = "Level: " + SceneManager.GetActiveScene().buildIndex.ToString();
         }
-        levelText.text = "Level: " + SceneManager.GetActiveScene().buildIndex.ToString();
+        
     }
+
     public void respawn() {
     	StartCoroutine("respawnCoroutine");
     }
@@ -38,23 +42,23 @@ public class LevelManager : MonoBehaviour
     	gamePlayer.gameObject.SetActive(true);
     } 
 
-    public void changeLevel() {
+    IEnumerator changeLevelCoroutine() {
+        //Play animation
+        
+        //Wait 
+        yield return new WaitForSeconds(transitionTime);
+        //Change level
+
         currentLevel = SceneManager.GetActiveScene().buildIndex + 1;
         Vector3 startPoint = level1StartPoint;
-        // if (currentLevel == 1){
-        //         startPoint = level1StartPoint;
-        //     } else if (currentLevel == 2) {
-        //         startPoint = level2StartPoint;
-        //     } else if (currentLevel == 3) {
-        //         startPoint = level3StartPoint;
-        //     }
-        
         gamePlayer.respawnPoint = startPoint;
         gamePlayer.transform.position = startPoint;
         SceneManager.LoadScene(currentLevel);
-        // print("level = ");
-        // print(level.ToString());
-        // levelText.text = "Level: " + level.ToString();
+        transition.SetTrigger("LevelStart");
+    }
+    public void changeLevel() {
+    	transition.SetTrigger("LevelEnd");
+        StartCoroutine(changeLevelCoroutine());
     }
 }
 

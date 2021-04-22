@@ -8627,12 +8627,12 @@ PrefabInstance:
     - target: {fileID: 8514004806149991991, guid: fde1a0c806c9241079b36945c4a792c5,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -3
+      value: 209.5
       objectReference: {fileID: 0}
     - target: {fileID: 8514004806149991991, guid: fde1a0c806c9241079b36945c4a792c5,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2.2
+      value: 27.26
       objectReference: {fileID: 0}
     - target: {fileID: 8514004806149991991, guid: fde1a0c806c9241079b36945c4a792c5,
         type: 3}
@@ -20299,6 +20299,8 @@ MonoBehaviour:
   respawnDelay: 2
   transition: {fileID: 0}
   transitionTime: 1
+  levelLoadingLabel: {fileID: 0}
+  currentLevel: 0
 --- !u!4 &1907937932
 Transform:
   m_ObjectHideFlags: 0

@@ -9,6 +9,7 @@ ScriptsOnlyBuild:
     - CameraController
     - Checkpoint
     - CoinScript
+    - GameControls
     - LevelManager
     - MainMenu
     - PlayerController
@@ -31,10 +32,9 @@ ScriptsOnlyBuild:
     UnityEditor.Graphs.dll:
     - UnityEditor.Graphs.AnimationBlendTree.Graph
     - UnityEditor.Graphs.AnimationBlendTree.GraphGUI
-    - UnityEditor.Graphs.AnimationStateMachine.AnyStateNode
     - UnityEditor.Graphs.AnimationStateMachine.Graph
     - UnityEditor.Graphs.AnimationStateMachine.GraphGUI
-    - UnityEditor.Graphs.AnimationStateMachine.StateNode
+    - UnityEditor.Graphs.AnimatorControllerTool
     UnityEditor.TestRunner.dll:
     - UnityEditor.TestTools.TestRunner.Api.CallbacksHolder
     - UnityEditor.TestTools.TestRunner.TestListCacheData
@@ -47,6 +47,9 @@ ScriptsOnlyBuild:
     - UnityEngine.UI.CanvasScaler
     - UnityEngine.UI.GraphicRaycaster
     - UnityEngine.UI.Image
+    - UnityEngine.UI.Mask
+    - UnityEngine.UI.ScrollRect
+    - UnityEngine.UI.Scrollbar
   sceneClasses:
     Assets/Scenes/Level_1.unity:
     - Class: 1
@@ -121,6 +124,8 @@ ScriptsOnlyBuild:
       Script: {instanceID: 14654}
     - Class: 114
       Script: {instanceID: 14728}
+    - Class: 114
+      Script: {instanceID: 57726}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 157
@@ -212,6 +217,8 @@ ScriptsOnlyBuild:
       Script: {instanceID: 14654}
     - Class: 114
       Script: {instanceID: 14728}
+    - Class: 114
+      Script: {instanceID: 57726}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 157
@@ -311,6 +318,8 @@ ScriptsOnlyBuild:
       Script: {instanceID: 14654}
     - Class: 114
       Script: {instanceID: 14728}
+    - Class: 114
+      Script: {instanceID: 57726}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 157
@@ -408,6 +417,8 @@ ScriptsOnlyBuild:
       Script: {instanceID: 14654}
     - Class: 114
       Script: {instanceID: 14728}
+    - Class: 114
+      Script: {instanceID: 57726}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 157
@@ -478,11 +489,17 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 11364}
     - Class: 114
+      Script: {instanceID: 11694}
+    - Class: 114
       Script: {instanceID: 11746}
+    - Class: 114
+      Script: {instanceID: 12282}
     - Class: 114
       Script: {instanceID: 12460}
     - Class: 114
       Script: {instanceID: 12520}
+    - Class: 114
+      Script: {instanceID: 12846}
     - Class: 114
       Script: {instanceID: 13298}
     - Class: 114
@@ -520,8 +537,6 @@ ScriptsOnlyBuild:
     - Class: 223
       Script: {instanceID: 0}
     - Class: 224
-      Script: {instanceID: 0}
-    - Class: 225
       Script: {instanceID: 0}
   scriptHashData:
   - hash:
@@ -1108,7 +1123,7 @@ ScriptsOnlyBuild:
     className: MarkerTrack
   - hash:
       serializedVersion: 2
-      Hash: 727753fb8d5388aea45f3421787f314f
+      Hash: 6261ba5bd1d37b222d99630193e93605
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: LevelManager
@@ -1120,7 +1135,7 @@ ScriptsOnlyBuild:
     className: TMP_StyleSheet
   - hash:
       serializedVersion: 2
-      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+      Hash: e21eb85ffd71d772d750c77aaac0e876
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: MainMenu
@@ -1250,6 +1265,12 @@ ScriptsOnlyBuild:
     assemblyName: Unity.Timeline.dll
     namespaceName: UnityEngine.Timeline
     className: PlayableTrack
+  - hash:
+      serializedVersion: 2
+      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: GameControls
   platform: 13
   scenePathNames:
   - Assets/Scenes/Menu.unity

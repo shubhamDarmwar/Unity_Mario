@@ -6478,6 +6478,8 @@ MonoBehaviour:
   respawnDelay: 2
   transition: {fileID: 0}
   transitionTime: 1
+  levelLoadingLabel: {fileID: 0}
+  currentLevel: 0
 --- !u!4 &1330039193
 Transform:
   m_ObjectHideFlags: 0
@@ -11969,12 +11971,12 @@ PrefabInstance:
     - target: {fileID: 8514004806149991991, guid: fde1a0c806c9241079b36945c4a792c5,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 9
+      value: 142.5
       objectReference: {fileID: 0}
     - target: {fileID: 8514004806149991991, guid: fde1a0c806c9241079b36945c4a792c5,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -4.2
+      value: -0.46
       objectReference: {fileID: 0}
     - target: {fileID: 8514004806149991991, guid: fde1a0c806c9241079b36945c4a792c5,
         type: 3}

@@ -20,7 +20,7 @@ public class PlayerController : MonoBehaviour
 	private float originalScale;
 
     public Vector3 respawnPoint;
-    private static LevelManager levelManager;
+    public static LevelManager levelManager;
 
     //Score
     public Text scoreText;
@@ -43,7 +43,7 @@ public class PlayerController : MonoBehaviour
         respawnPoint = transform.position;
         levelManager = FindObjectOfType<LevelManager>();
         audioSource = GameObject.FindGameObjectsWithTag("AudioSource")[0].GetComponent<AudioSource>();
-        
+        loadPlayer();
 
     }
 
@@ -79,9 +79,6 @@ public class PlayerController : MonoBehaviour
     }
 
     void FixedUpdate() {
-        if (levelManager == null) {
-            levelManager = FindObjectOfType<LevelManager>();
-        }
         if (GameObject.FindGameObjectsWithTag("ScoreText").Length > 0){
             GameObject.FindGameObjectsWithTag("ScoreText")[0].GetComponent<TMPro.TextMeshProUGUI>().text = "Score: " + score.ToString();
         }
@@ -106,7 +103,6 @@ public class PlayerController : MonoBehaviour
             audioSource.clip = blastAudioClip;
             audioSource.Play();
         } else if (other.tag == "LevelEnd") {
-
             levelManager.changeLevel();
         } else if (other.tag == "FireBall") {
             levelManager.respawn();
@@ -115,5 +111,13 @@ public class PlayerController : MonoBehaviour
         } else if (other.tag == "Saw") {
             levelManager.respawn();
         }
+    }
+
+    
+
+    void loadPlayer() {
+        PlayerProgress data = SaveSystem.loadPlayer();
+        int level = data.level;
+        // levelManager.currentLevel = level;
     }
 }

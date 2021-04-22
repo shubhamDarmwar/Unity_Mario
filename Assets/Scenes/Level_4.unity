@@ -4902,11 +4902,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: GameControls
       objectReference: {fileID: 0}
-    - target: {fileID: 8635306761679789248, guid: 242c7a64089d343e1bf117d84fa0a9cc,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 8635306761679789263, guid: 242c7a64089d343e1bf117d84fa0a9cc,
         type: 3}
       propertyPath: m_Pivot.x
@@ -10894,6 +10889,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   respawnDelay: 2
+  transition: {fileID: 0}
+  transitionTime: 1
+  levelLoadingLabel: {fileID: 0}
+  currentLevel: 0
 --- !u!4 &762777669
 Transform:
   m_ObjectHideFlags: 0

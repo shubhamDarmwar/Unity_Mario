@@ -19,10 +19,15 @@ public class AutoMove : MonoBehaviour
 	public bool upFirst = true;
 	public bool horizontal = false;
 	public bool rotation = false;
+	public bool face = false;
 
+	private float originalXScale;
+	private float originalYScale;
 	private void Start()
 	{
 		pos = transform.position;
+		originalXScale = transform.localScale.x;
+		originalYScale = transform.localScale.y;
 	}
 
 	void Update()
@@ -44,7 +49,23 @@ public class AutoMove : MonoBehaviour
 				newY = Mathf.Cos(Time.time * speed) * height + pos.y;
 			}
 		}
+		if (face) {
+			float temp = -Mathf.Cos(Time.time * speed);
 
+			if (upFirst) {
+					temp = -Mathf.Cos(Time.time * speed);
+				} else {
+					temp = Mathf.Sin(Time.time * speed);
+				}
+
+			if (temp > 0) {
+				transform.localScale = new Vector2(-originalXScale,originalYScale);
+			} else {
+				transform.localScale = new Vector2(originalXScale,originalYScale);
+			} 	
+		}
+		
+		
 		//set the object's Y to the new calculated Y
 		transform.position = new Vector3(newX, newY, transform.position.z) ;
 		if (rotation) {

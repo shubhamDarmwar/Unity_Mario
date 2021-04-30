@@ -4,6 +4,14 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityStandardAssets.CrossPlatformInput;
 
+public enum Clip {
+    jump,
+    coin,
+    blast,
+    checkPoint
+}
+
+
 public class PlayerController : MonoBehaviour
 {
 	public float speed = 5f;
@@ -24,14 +32,16 @@ public class PlayerController : MonoBehaviour
 
     //Score
     public Text scoreText;
-    private int score = 0;
+    public int score = 0;
 
     // Audio 
-    private AudioSource audioSource;
+    public AudioController audioController;
     public AudioClip coinAudioClip;
     public AudioClip blastAudioClip;
     public AudioClip jumpAudioClip;
     public AudioClip checkPointAudioClip;
+
+    // public GameObject stone;
 
     // Start is called before the first frame update
     void Start()
@@ -42,7 +52,7 @@ public class PlayerController : MonoBehaviour
         originalScale = transform.localScale.x;
         respawnPoint = transform.position;
         levelManager = FindObjectOfType<LevelManager>();
-        audioSource = GameObject.FindGameObjectsWithTag("AudioSource")[0].GetComponent<AudioSource>();
+        audioController = FindObjectOfType<AudioController>();
         loadPlayer();
 
     }
@@ -68,8 +78,8 @@ public class PlayerController : MonoBehaviour
         //Jump
         if (CrossPlatformInputManager.GetButtonDown("Jump") && isTouchingGround) {
         	rigidBody.velocity = new Vector2(rigidBody.velocity.x, jumpSpeed);
-            audioSource.clip = jumpAudioClip;
-            audioSource.Play();
+            audioController.playClip(Clip.jump);
+
         }
 
         //Animation
@@ -90,18 +100,15 @@ public class PlayerController : MonoBehaviour
     	if (other.tag == "FallDetector") {
             levelManager.respawn();
     	} else if (other.tag == "Checkpoint") {
-            audioSource.clip = checkPointAudioClip;
-            audioSource.Play();
+            audioController.playClip(Clip.checkPoint);
             
             respawnPoint = other.transform.position;
         } else if (other.tag == "Coin") {
         	score += 10;
-            audioSource.clip = coinAudioClip;
-            audioSource.Play();
+            audioController.playClip(Clip.coin);
         } else if (other.tag == "Bomb") {
         	levelManager.respawn();
-            audioSource.clip = blastAudioClip;
-            audioSource.Play();
+            audioController.playClip(Clip.blast);
         } else if (other.tag == "LevelEnd") {
             levelManager.changeLevel();
         } else if (other.tag == "FireBall") {
@@ -117,7 +124,22 @@ public class PlayerController : MonoBehaviour
 
     void loadPlayer() {
         PlayerProgress data = SaveSystem.loadPlayer();
-        int level = data.level;
+        // int level = data.level;
         // levelManager.currentLevel = level;
+        score = data.score;
     }
+
+    // public void Throw(Vector3 location, float direction)
+    //  {
+    //     stone = Instantiate(stone);
+    //     stone.transform.position = new Vector3(location.x + 1,location.y, location.z);
+
+    //     Rigidbody2D rigidBody = stone.GetComponent<Rigidbody2D>() ;
+    //     float dir = 1;
+    //     if (direction < 0) {
+    //         dir = -1;
+    //     }
+    //     rigidBody.velocity = new Vector2(dir * 10f, 0);
+    //     Debug.Log(transform.localScale.x);
+    //  }
 }

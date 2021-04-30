@@ -18,6 +18,7 @@ TagManager:
   - Ghost
   - Saw
   - LevelButton
+  - Stone
   layers:
   - Default
   - TransparentFX

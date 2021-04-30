@@ -8,12 +8,24 @@ using System.Runtime.Serialization.Formatters.Binary;
 public static class SaveSystem
 {
 	private static string path = Application.persistentDataPath + "/Player.fun";
+	private static int unlockedLevel = 1;
+	private static int oldScore = 0;
 
-	public static void savePlayer( int level) {
+	public static void savePlayer(int level, int score) {
 		BinaryFormatter formatter = new BinaryFormatter();
 		FileStream stream = new FileStream(path, FileMode.Create);
+		int newUnlockedLevel = unlockedLevel;
+		if(level > unlockedLevel) {
+			newUnlockedLevel = level;
+			unlockedLevel = level;
+		}
 
-		PlayerProgress data = new PlayerProgress(level);
+		int newScore = oldScore;
+		if(score > oldScore) {
+			newScore = score;
+		}
+
+		PlayerProgress data = new PlayerProgress(newUnlockedLevel, newScore);
 		formatter.Serialize(stream, data);
 		stream.Close();
 		Debug.Log("Saved player");
@@ -28,6 +40,8 @@ public static class SaveSystem
 			PlayerProgress data = formatter.Deserialize(stream) as PlayerProgress;
 			stream.Close();
 			Debug.Log("load player");
+
+			unlockedLevel = data.level;
 			return data; 
 			} else {
 				

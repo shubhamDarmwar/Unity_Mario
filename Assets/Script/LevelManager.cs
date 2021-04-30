@@ -57,7 +57,6 @@ public class LevelManager : MonoBehaviour
         //Play animation
         currentLevel = SceneManager.GetActiveScene().buildIndex + 1;
         levelLoadingLabel.text = "LEVEL " + currentLevel.ToString();
-        Debug.Log("Current level : " + currentLevel.ToString());
         savePlayer();
         //Wait 
         yield return new WaitForSeconds(transitionTime);
@@ -70,8 +69,36 @@ public class LevelManager : MonoBehaviour
         transition.SetTrigger("LevelStart");
     }
 
+    public void loadScene(int index) {
+    	transition.SetTrigger("LevelEnd");
+        StartCoroutine(loadLevelCoroutine(index));
+    	// SceneManager.LoadScene(index);
+     //    transition.SetTrigger("LevelStart");
+    }
+
+IEnumerator loadLevelCoroutine(int index) {
+        //Play animation
+        currentLevel = index;
+        if (index == 0) {
+                levelLoadingLabel.text = "Loading...";
+            } else {
+                levelLoadingLabel.text = "LEVEL " + currentLevel.ToString();
+            }
+        
+        savePlayer();
+        //Wait 
+		Debug.Log("Load " + index.ToString());
+        yield return new WaitForSeconds(transitionTime);
+        //Change level
+
+        Vector3 startPoint = level1StartPoint;
+        gamePlayer.respawnPoint = startPoint;
+        gamePlayer.transform.position = startPoint;
+        SceneManager.LoadScene(index);
+        transition.SetTrigger("LevelStart");
+    }
     private void savePlayer() {
-        SaveSystem.savePlayer(currentLevel);
+        SaveSystem.savePlayer(currentLevel, gamePlayer.score);
     }
 }
 

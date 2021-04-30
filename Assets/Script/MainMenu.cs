@@ -10,6 +10,7 @@ public class MainMenu : MonoBehaviour
     public GameObject levelMenuView;
 	public Button[] levelButtons;
     private static LevelManager levelManager;
+    public GameObject player;
 
 	void Start() {
 		levelManager = FindObjectOfType<LevelManager>();
@@ -22,6 +23,10 @@ public class MainMenu : MonoBehaviour
             int closureIndex = i ; // Prevents the closure problem
             levelButtons[closureIndex].onClick.AddListener( () => levelButtonClicked( closureIndex ) );
         }
+        if (GameObject.FindGameObjectWithTag("PlayerTag") == null) {
+            Instantiate(player);
+        }
+        
 
 	}
 
@@ -33,7 +38,7 @@ public class MainMenu : MonoBehaviour
         levelMenuView.SetActive(true);
 
         PlayerProgress data = SaveSystem.loadPlayer();
-        int level = data.level;
+        int level = 4;//data.level;
         Debug.Log("Unlocked level" + level.ToString());
         for(int i = 0; i < levelButtons.Length; i++) {
             if (i < level) {
@@ -45,15 +50,11 @@ public class MainMenu : MonoBehaviour
     }
 
     public void quitGame() {
-    	print("quitGame");
     	Application.Quit();
     }
 
     public void levelButtonClicked(int buttonIndex) {
-        
-        // SceneManager.LoadScene(levelManager.currentLevel);
-        SceneManager.LoadScene(buttonIndex + 1);
-        
+        levelManager.loadScene(buttonIndex + 1);
     }
 
     public void levelMenuBackButtonClicked() {

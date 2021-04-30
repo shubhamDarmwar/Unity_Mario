@@ -7,14 +7,16 @@ public class PlayerProgress
 {
     public int level;
     public int health;
+    public int score;
     public float[] position;
 
-    public PlayerProgress (int level) 
+    public PlayerProgress (int level, int score) 
     {
     	Debug.Log("Saved level = " + level.ToString());
-    	if (this.level < level) {
+    	// if (this.level < level) {
     		this.level = level;
-    	}
+            this.score = score;
+    	// }
     	
     	position = new float[3];
     	// position[0] = player.transform.position.x;
@@ -24,6 +26,7 @@ public class PlayerProgress
 
     public PlayerProgress () {
     	level = 1;
+        score = 0;
     	position = new float[3];
     	position[0] = 0;
     	position[1] = 0;

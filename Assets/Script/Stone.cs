@@ -4,7 +4,18 @@ using UnityEngine;
 
 public class Stone : MonoBehaviour
 {
-    public void Setup(Vector3 shootDir) {
-    	
+	public bool thrown = false;
+    void Start() {
+    	if (thrown) {
+    		StartCoroutine(destroySelf());
+    	}
+		
     }
+
+    IEnumerator destroySelf() {
+    	yield return new WaitForSeconds(1.5f);
+    	Destroy(gameObject);
+
+	}
+
 }

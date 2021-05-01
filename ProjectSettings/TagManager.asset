@@ -19,6 +19,8 @@ TagManager:
   - Saw
   - LevelButton
   - Stone
+  - Ladybird
+  - StoneCountText
   layers:
   - Default
   - TransparentFX

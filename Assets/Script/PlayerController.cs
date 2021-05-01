@@ -33,6 +33,7 @@ public class PlayerController : MonoBehaviour
     //Score
     public Text scoreText;
     public int score = 0;
+    public int stones = 3;
 
     // Audio 
     public AudioController audioController;
@@ -92,6 +93,10 @@ public class PlayerController : MonoBehaviour
         if (GameObject.FindGameObjectsWithTag("ScoreText").Length > 0){
             GameObject.FindGameObjectsWithTag("ScoreText")[0].GetComponent<TMPro.TextMeshProUGUI>().text = "Score: " + score.ToString();
         }
+        if (GameObject.FindGameObjectsWithTag("StoneCountText").Length > 0){
+            GameObject.FindGameObjectsWithTag("StoneCountText")[0].GetComponent<TMPro.TextMeshProUGUI>().text = stones.ToString();
+        }
+        
         
     }
 
@@ -120,6 +125,16 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+void OnCollisionEnter2D(Collision2D other) {
+        if (other.gameObject.tag == "Ladybird") {
+            levelManager.respawn();
+        } else if (other.gameObject.tag == "Stone") {
+            Destroy(other.gameObject);
+            stones += 1;
+        }
+        
+        
+    }
     
 
     void loadPlayer() {

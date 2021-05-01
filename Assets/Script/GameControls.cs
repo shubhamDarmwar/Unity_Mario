@@ -64,10 +64,15 @@ public class GameControls : MonoBehaviour
 
     public void Throw(Vector3 location, float direction)
      {
-        stone = Instantiate(stone);
-        stone.transform.position = new Vector3(location.x + 1,location.y + 0.5f, location.z);
+        if(GameObject.FindGameObjectWithTag("PlayerTag").GetComponent<PlayerController>().stones < 1 ) {
+            return;
+        }
+        GameObject.FindGameObjectWithTag("PlayerTag").GetComponent<PlayerController>().stones -= 1;
+        GameObject newStone = Instantiate(stone);
+        newStone.GetComponent<Stone>().thrown = true;
+        newStone.transform.position = new Vector3(location.x + 1,location.y + 0.5f, location.z);
 
-        Rigidbody2D rigidBody = stone.GetComponent<Rigidbody2D>() ;
+        Rigidbody2D rigidBody = newStone.GetComponent<Rigidbody2D>() ;
         float dir = 1;
         if (direction < 0) {
             dir = -1;

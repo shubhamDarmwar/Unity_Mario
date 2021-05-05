@@ -38,7 +38,7 @@ public class MainMenu : MonoBehaviour
         levelMenuView.SetActive(true);
 
         PlayerProgress data = SaveSystem.loadPlayer();
-        int level = 4;//data.level;
+        int level = data.level;
         Debug.Log("Unlocked level" + level.ToString());
         for(int i = 0; i < levelButtons.Length; i++) {
             if (i < level) {

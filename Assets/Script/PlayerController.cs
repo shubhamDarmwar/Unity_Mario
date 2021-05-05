@@ -65,7 +65,7 @@ public class PlayerController : MonoBehaviour
     	GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeRotation;
     	isTouchingGround = Physics2D.OverlapCircle (groundCheckPoint.position, groundCheckRadius, groundLayer);
     	//Negative for left movement and +ve value for right movement
-        movement = CrossPlatformInputManager.GetAxis("Horizontal");//CrossPlatformInputManager
+        movement = Input.GetAxis("Horizontal");//CrossPlatformInputManager
         if (movement < 0f) {
         	rigidBody.velocity = new Vector2(movement * speed, rigidBody.velocity.y);
         	transform.localScale = new Vector2(-originalScale,originalScale);
@@ -77,7 +77,7 @@ public class PlayerController : MonoBehaviour
         }
 
         //Jump
-        if (CrossPlatformInputManager.GetButtonDown("Jump") && isTouchingGround) {
+        if (Input.GetButtonDown("Jump") && isTouchingGround) {
         	rigidBody.velocity = new Vector2(rigidBody.velocity.x, jumpSpeed);
             audioController.playClip(Clip.jump);
 

@@ -10,8 +10,14 @@ PrefabInstance:
     - target: {fileID: 9069776482217294155, guid: a546cb7b7d841463ea580fcd83420e8a,
         type: 3}
       propertyPath: m_Name
-      value: GrassHillRight (1) Variant
+      value: GrassHillRight (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 9069776482217294156, guid: a546cb7b7d841463ea580fcd83420e8a,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: c401a78d82536714f834215e527fc133,
+        type: 3}
     - target: {fileID: 9069776482217294156, guid: a546cb7b7d841463ea580fcd83420e8a,
         type: 3}
       propertyPath: m_Color.b

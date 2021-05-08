@@ -4,6 +4,7 @@ ScriptsOnlyBuild:
     - UnityStandardAssets.CrossPlatformInput.AxisTouchButton
     - UnityStandardAssets.CrossPlatformInput.ButtonHandler
     Assembly-CSharp.dll:
+    - Ads
     - AudioController
     - AutoMove
     - Bomb
@@ -144,6 +145,8 @@ ScriptsOnlyBuild:
       Script: {instanceID: 14666}
     - Class: 114
       Script: {instanceID: 14740}
+    - Class: 114
+      Script: {instanceID: 24352}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 157
@@ -253,6 +256,8 @@ ScriptsOnlyBuild:
       Script: {instanceID: 14740}
     - Class: 114
       Script: {instanceID: 14830}
+    - Class: 114
+      Script: {instanceID: 24352}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 157
@@ -364,6 +369,8 @@ ScriptsOnlyBuild:
       Script: {instanceID: 14740}
     - Class: 114
       Script: {instanceID: 14830}
+    - Class: 114
+      Script: {instanceID: 24352}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 157
@@ -473,6 +480,8 @@ ScriptsOnlyBuild:
       Script: {instanceID: 14666}
     - Class: 114
       Script: {instanceID: 14740}
+    - Class: 114
+      Script: {instanceID: 24352}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 157
@@ -1349,6 +1358,18 @@ ScriptsOnlyBuild:
     assemblyName: Unity.Timeline.dll
     namespaceName: UnityEngine.Timeline
     className: PlayableTrack
+  - hash:
+      serializedVersion: 2
+      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: Ads
+  - hash:
+      serializedVersion: 2
+      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+    assemblyName: UnityEngine.Monetization.Editor.dll
+    namespaceName: UnityEngine.Monetization
+    className: Placeholder
   platform: 13
   scenePathNames:
   - Assets/Scenes/Menu.unity
@@ -1356,4 +1377,4 @@ ScriptsOnlyBuild:
   - Assets/Scenes/Level_2.unity
   - Assets/Scenes/Level_3.unity
   - Assets/Scenes/Level_4.unity
-  playerPath: /Users/sdaramwar/Documents/Study/GitHub/Unity_Mario/Android_m.apk
+  playerPath: /Users/sdaramwar/Documents/Study/GitHub/Unity_Mario/ChintuJump.aab

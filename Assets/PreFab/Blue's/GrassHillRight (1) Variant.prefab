@@ -10,7 +10,7 @@ PrefabInstance:
     - target: {fileID: 9069776482217294155, guid: a546cb7b7d841463ea580fcd83420e8a,
         type: 3}
       propertyPath: m_Name
-      value: GrassHillRight (1)
+      value: GrassHillRight (1) Variant
       objectReference: {fileID: 0}
     - target: {fileID: 9069776482217294156, guid: a546cb7b7d841463ea580fcd83420e8a,
         type: 3}
@@ -51,7 +51,7 @@ PrefabInstance:
     - target: {fileID: 9069776482217294157, guid: a546cb7b7d841463ea580fcd83420e8a,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9069776482217294157, guid: a546cb7b7d841463ea580fcd83420e8a,
         type: 3}

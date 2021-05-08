@@ -16,7 +16,7 @@ PrefabInstance:
     - target: {fileID: 7307639410515308135, guid: 9b2d9649d88ef4b5c9a1a6c54a512a76,
         type: 3}
       propertyPath: m_Name
-      value: GrassHillLeft2 (1)
+      value: GrassHillLeft2 (1) Variant
       objectReference: {fileID: 0}
     - target: {fileID: 7907678139761579698, guid: 9b2d9649d88ef4b5c9a1a6c54a512a76,
         type: 3}
@@ -36,7 +36,7 @@ PrefabInstance:
     - target: {fileID: 7907678139761579698, guid: 9b2d9649d88ef4b5c9a1a6c54a512a76,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7907678139761579698, guid: 9b2d9649d88ef4b5c9a1a6c54a512a76,
         type: 3}

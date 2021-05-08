@@ -31,7 +31,7 @@ PrefabInstance:
     - target: {fileID: 3947668166958434734, guid: 6e1c69f75a1b4482c82bc03e742d1eb0,
         type: 3}
       propertyPath: m_Name
-      value: GrassHillRight2_Down Shadow
+      value: GrassHillRight2_Down Shadow Variant
       objectReference: {fileID: 0}
     - target: {fileID: 9177109294201360788, guid: 6e1c69f75a1b4482c82bc03e742d1eb0,
         type: 3}
@@ -51,7 +51,7 @@ PrefabInstance:
     - target: {fileID: 9177109294201360788, guid: 6e1c69f75a1b4482c82bc03e742d1eb0,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9177109294201360788, guid: 6e1c69f75a1b4482c82bc03e742d1eb0,
         type: 3}

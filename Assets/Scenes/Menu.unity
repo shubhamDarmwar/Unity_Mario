@@ -4544,6 +4544,7 @@ MonoBehaviour:
   blastAudioClip: {fileID: 8300000, guid: 7020f67507d2c0c48b4e7a2449bfad82, type: 3}
   jumpAudioClip: {fileID: 8300000, guid: 6e110ee569cc23148a024775e450f04f, type: 3}
   checkPointAudioClip: {fileID: 8300000, guid: a88f95669e5710245880b9d6998805d9, type: 3}
+  gameOverClip: {fileID: 8300000, guid: ec60c7bff69b79b49a27ad3b33ed249d, type: 3}
 --- !u!82 &1252814430
 AudioSource:
   m_ObjectHideFlags: 0

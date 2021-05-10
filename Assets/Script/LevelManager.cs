@@ -78,9 +78,9 @@ public class LevelManager : MonoBehaviour
 
 IEnumerator loadLevelCoroutine(int index) {
         //Play animation
-    
+
         currentLevel = index;
-        if (index == 0) {
+        if (index == 0 || index == 5) {
                 levelLoadingLabel.text = "Loading...";
             } else {
                 levelLoadingLabel.text = "LEVEL " + currentLevel.ToString();

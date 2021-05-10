@@ -4,21 +4,6 @@ using UnityEngine;
 
 public class Ladybird : MonoBehaviour
 {
-	bool halfKill = false;
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    	if(halfKill) {
-    		
-    	}
-    }
 
     // void OnTriggerEnter2D(Collider2D other) {
     // 	if (other.tag == "Stone") {
@@ -28,7 +13,6 @@ public class Ladybird : MonoBehaviour
     // }
     void OnCollisionEnter2D(Collision2D other) {
     	if (other.gameObject.tag == "Stone") {
-    		halfKill = true;
     		GetComponent<Collider2D>().isTrigger = true;
     		AutoMove movingObj = gameObject.GetComponent<AutoMove>();
     		movingObj.canMove = false;

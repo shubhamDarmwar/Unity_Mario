@@ -8,7 +8,8 @@ public enum Clip {
     jump,
     coin,
     blast,
-    checkPoint
+    checkPoint,
+    gameOver
 }
 
 
@@ -103,7 +104,7 @@ public class PlayerController : MonoBehaviour
     void OnTriggerEnter2D(Collider2D other) {
         
     	if (other.tag == "FallDetector") {
-            levelManager.respawn();
+            respawn();
     	} else if (other.tag == "Checkpoint") {
             audioController.playClip(Clip.checkPoint);
             
@@ -116,18 +117,25 @@ public class PlayerController : MonoBehaviour
             audioController.playClip(Clip.blast);
         } else if (other.tag == "LevelEnd") {
             levelManager.changeLevel();
+            audioController.playClip(Clip.gameOver);
         } else if (other.tag == "FireBall") {
-            levelManager.respawn();
+            respawn();
         } else if (other.tag == "Ghost") {
-            levelManager.respawn();
+            respawn();
         } else if (other.tag == "Saw") {
-            levelManager.respawn();
+            respawn();
         }
     }
+
+void respawn() {
+    levelManager.respawn();
+    audioController.playClip(Clip.gameOver);
+}
 
 void OnCollisionEnter2D(Collision2D other) {
         if (other.gameObject.tag == "Ladybird") {
             levelManager.respawn();
+            respawn();
         } else if (other.gameObject.tag == "Stone") {
             Destroy(other.gameObject);
             stones += 1;

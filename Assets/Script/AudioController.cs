@@ -8,6 +8,7 @@ public class AudioController : MonoBehaviour
     public AudioClip blastAudioClip;
     public AudioClip jumpAudioClip;
     public AudioClip checkPointAudioClip;
+    public AudioClip gameOverClip;
 
 	private AudioSource audioSource;
     // Start is called before the first frame update
@@ -15,12 +16,6 @@ public class AudioController : MonoBehaviour
     {
     	DontDestroyOnLoad(gameObject);
      	audioSource = GameObject.FindGameObjectsWithTag("AudioSource")[0].GetComponent<AudioSource>();   
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 
     public void playClip(Clip clip) {
@@ -39,6 +34,10 @@ public class AudioController : MonoBehaviour
     		case Clip.checkPoint:
     			audioClip = checkPointAudioClip;
     		break;
+            case Clip.gameOver:
+                Debug.Log("Game over");
+                audioClip = gameOverClip;
+            break;
     		default:
     			audioClip = blastAudioClip;
     		break;

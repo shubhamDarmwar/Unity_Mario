@@ -70,12 +70,15 @@ public class GameControls : MonoBehaviour
         GameObject.FindGameObjectWithTag("PlayerTag").GetComponent<PlayerController>().stones -= 1;
         GameObject newStone = Instantiate(stone);
         newStone.GetComponent<Stone>().thrown = true;
-        newStone.transform.position = new Vector3(location.x + 1,location.y + 0.5f, location.z);
 
         Rigidbody2D rigidBody = newStone.GetComponent<Rigidbody2D>() ;
         float dir = 1;
         if (direction < 0) {
+            newStone.transform.position = new Vector3(location.x - 1,location.y + 0.5f, location.z);
             dir = -1;
+        } else {
+            newStone.transform.position = new Vector3(location.x + 1,location.y + 0.5f, location.z);
+            dir = 1;
         }
         rigidBody.velocity = new Vector2(dir * 10f, 0);
      }

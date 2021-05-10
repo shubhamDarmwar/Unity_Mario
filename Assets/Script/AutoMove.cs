@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class AutoMove : MonoBehaviour
 {
+	public bool canMove = true;
 	//adjust this to change speed
 	[SerializeField]
 	float speed = 5f;
@@ -11,16 +12,16 @@ public class AutoMove : MonoBehaviour
 	//adjust this to change how high it goes
 	[SerializeField]
 	float height = 0.5f;
-
-	public int _rotationSpeed = 30;
 	
 	Vector3 pos;
 
 	public bool upFirst = true;
 	public bool horizontal = false;
 	public bool rotation = false;
+	public int _rotationSpeed = 30;
+	public bool clockwise = true;
 	public bool face = false;
-	public bool canMove = true;
+	
 
 	private float originalXScale;
 	private float originalYScale;
@@ -71,7 +72,11 @@ public class AutoMove : MonoBehaviour
 			//set the object's Y to the new calculated Y
 			transform.position = new Vector3(newX, newY, transform.position.z) ;
 			if (rotation) {
-				transform.Rotate (0, 0, _rotationSpeed * Time.deltaTime);
+				if (clockwise) {
+						transform.Rotate (0, 0, -_rotationSpeed * Time.deltaTime);
+					} else {
+						transform.Rotate (0, 0, _rotationSpeed * Time.deltaTime);
+					}
 			}
 
 		}

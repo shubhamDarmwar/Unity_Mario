@@ -5045,6 +5045,26 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1111199064792810988, guid: 242c7a64089d343e1bf117d84fa0a9cc,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1111199064792810988, guid: 242c7a64089d343e1bf117d84fa0a9cc,
+        type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1111199064792810988, guid: 242c7a64089d343e1bf117d84fa0a9cc,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1111199064792810988, guid: 242c7a64089d343e1bf117d84fa0a9cc,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2834189063469697237, guid: 242c7a64089d343e1bf117d84fa0a9cc,
         type: 3}
       propertyPath: m_AnchorMax.y
@@ -5109,6 +5129,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: GameControls
+      objectReference: {fileID: 0}
+    - target: {fileID: 8635306761679789248, guid: 242c7a64089d343e1bf117d84fa0a9cc,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8635306761679789263, guid: 242c7a64089d343e1bf117d84fa0a9cc,
         type: 3}

@@ -38,8 +38,8 @@ public class MainMenu : MonoBehaviour
         levelMenuView.SetActive(true);
 
         PlayerProgress data = SaveSystem.loadPlayer();
-        int level = data.level;
-        // int level = 5;
+        // int level = data.level;
+        int level = 5;
         Debug.Log("Unlocked level" + level.ToString());
         for(int i = 0; i < levelButtons.Length; i++) {
             if (i < level) {

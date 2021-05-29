@@ -21,6 +21,7 @@ public class PlayerController : MonoBehaviour
 
 	private Rigidbody2D rigidBody;
 	//Following are connected in Scene 
+	public GameObject cap;
 	public Transform groundCheckPoint;
 	public float groundCheckRadius;
 	public LayerMask groundLayer;
@@ -43,6 +44,7 @@ public class PlayerController : MonoBehaviour
     public AudioClip jumpAudioClip;
     public AudioClip checkPointAudioClip;
 
+	private Transform originalCapTransform;
     // public GameObject stone;
 
     // Start is called before the first frame update
@@ -56,7 +58,7 @@ public class PlayerController : MonoBehaviour
         levelManager = FindObjectOfType<LevelManager>();
         audioController = FindObjectOfType<AudioController>();
         loadPlayer();
-
+        // originalCapTransform = cap.transform;
     }
 
     // Update is called once per frame
@@ -82,8 +84,14 @@ public class PlayerController : MonoBehaviour
         	rigidBody.velocity = new Vector2(rigidBody.velocity.x, jumpSpeed);
             audioController.playClip(Clip.jump);
 
+            // cap.transform.Rotate (0, 0, 200);
         }
-
+        if (isTouchingGround) {
+        	cap.transform.eulerAngles = Vector3.forward;
+        	} else {
+        		cap.transform.eulerAngles = Vector3.forward * 10;
+        	}
+        
         //Animation
         playerAnimator.SetFloat("Speed",Mathf.Abs(rigidBody.velocity.x));
         playerAnimator.SetBool("OnGround", isTouchingGround);

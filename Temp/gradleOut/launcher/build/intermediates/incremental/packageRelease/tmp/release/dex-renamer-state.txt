@@ -1,0 +1,4 @@
+#Sun May 30 13:22:53 IST 2021
+base.0=/Users/sdaramwar/Documents/Study/GitHub/Unity_Mario/Temp/gradleOut/launcher/build/intermediates/dex/release/out/classes.dex
+path.0=classes.dex
+renamed.0=classes.dex

@@ -821,7 +821,7 @@ PlayerSettings:
     Game_Performance: 0
     Hub: 0
     Purchasing: 0
-    UNet: 0
+    UNet: 1
     Unity_Ads: 0
   luminIcon:
     m_Name: 
@@ -837,7 +837,7 @@ PlayerSettings:
   apiCompatibilityLevel: 6
   cloudProjectId: 76c812cb-b642-4d8b-a1a1-06f3a824a00d
   framebufferDepthMemorylessMode: 0
-  projectName: Mario
+  projectName: Chintu Jump
   organizationId: unity_076dcf0ffddc8804cf2e
   cloudEnabled: 0
   enableNativePlatformBackendsForNewInputSystem: 0

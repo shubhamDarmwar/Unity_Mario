@@ -84,6 +84,7 @@
      <None Include="Assets\EffectExamples\Misc Effects\Prefabs\Readme_Dissolve_Respawn_.txt" />
      <None Include="Assets\BayatGames\Free Platform Game Assets\Readme.txt" />
      <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF-Surface-Mobile.shader" />
+     <None Include="Assets\GoogleMobileAds\link.xml" />
      <None Include="Assets\EffectExamples\Magic Effects\Shaders\Ice.shader" />
      <None Include="Assets\EffectExamples\Misc Effects\Shaders\Respawn.shader" />
      <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF-Surface.shader" />
@@ -97,6 +98,7 @@
      <None Include="Assets\EffectExamples\Misc Effects\Shaders\FireFly.shader" />
      <None Include="Assets\LICENSE.txt" />
      <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF Overlay.shader" />
+     <None Include="Assets\GoogleMobileAds\GoogleMobileAds_version-6.0.0_manifest.txt" />
      <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_Bitmap-Mobile.shader" />
      <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF-Mobile.shader" />
      <None Include="Assets\EffectExamples\Misc Effects\Shaders\Dissolve.shader" />
@@ -283,6 +285,18 @@
  </Reference>
  <Reference Include="UnityEngine.Monetization.Editor">
  <HintPath>/Users/sdaramwar/Documents/Study/GitHub/Unity_Mario/Assets/UnityAds/UnityEngine.Monetization.Editor.dll</HintPath>
+ </Reference>
+ <Reference Include="GoogleMobileAds.Unity">
+ <HintPath>/Users/sdaramwar/Documents/Study/GitHub/Unity_Mario/Assets/GoogleMobileAds/GoogleMobileAds.Unity.dll</HintPath>
+ </Reference>
+ <Reference Include="GoogleMobileAds.Core">
+ <HintPath>/Users/sdaramwar/Documents/Study/GitHub/Unity_Mario/Assets/GoogleMobileAds/GoogleMobileAds.Core.dll</HintPath>
+ </Reference>
+ <Reference Include="GoogleMobileAds.Common">
+ <HintPath>/Users/sdaramwar/Documents/Study/GitHub/Unity_Mario/Assets/GoogleMobileAds/GoogleMobileAds.Common.dll</HintPath>
+ </Reference>
+ <Reference Include="GoogleMobileAds">
+ <HintPath>/Users/sdaramwar/Documents/Study/GitHub/Unity_Mario/Assets/GoogleMobileAds/GoogleMobileAds.dll</HintPath>
  </Reference>
  <Reference Include="UnityEditor.iOS.Extensions.Xcode">
  <HintPath>/Applications/Unity/Hub/Editor/2019.4.21f1/PlaybackEngines/iOSSupport/UnityEditor.iOS.Extensions.Xcode.dll</HintPath>
@@ -733,6 +747,10 @@
     <ProjectReference Include="Assembly-CSharp-firstpass.csproj">
       <Project>{958D0315-FB2F-9742-3F68-A62AFFC4BB38}</Project>
       <Name>Assembly-CSharp-firstpass</Name>
+    </ProjectReference>
+    <ProjectReference Include="GoogleMobileAds.Editor.csproj">
+      <Project>{5BDBAC9D-6A97-78AE-2802-1D9501B10069}</Project>
+      <Name>GoogleMobileAds.Editor</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -57,6 +57,7 @@
   <ItemGroup>
      <Compile Include="Assets\Shared\Ramps\Editor\RampAssetEditor.cs" />
      <Compile Include="Assets\TutorialInfo\Scripts\Editor\ReadmeEditor.cs" />
+     <None Include="Assets\ExternalDependencyManager\Editor\external-dependency-manager_version-1.2.165_manifest.txt" />
  <Reference Include="UnityEngine">
  <HintPath>/Applications/Unity/Hub/Editor/2019.4.21f1/Unity.app/Contents/Managed/UnityEngine/UnityEngine.dll</HintPath>
  </Reference>
@@ -260,6 +261,33 @@
  </Reference>
  <Reference Include="UnityEngine.Monetization.Editor">
  <HintPath>/Users/sdaramwar/Documents/Study/GitHub/Unity_Mario/Assets/UnityAds/UnityEngine.Monetization.Editor.dll</HintPath>
+ </Reference>
+ <Reference Include="Google.VersionHandler">
+ <HintPath>/Users/sdaramwar/Documents/Study/GitHub/Unity_Mario/Assets/ExternalDependencyManager/Editor/Google.VersionHandler.dll</HintPath>
+ </Reference>
+ <Reference Include="Google.VersionHandlerImpl_v1.2.165">
+ <HintPath>/Users/sdaramwar/Documents/Study/GitHub/Unity_Mario/Assets/ExternalDependencyManager/Editor/Google.VersionHandlerImpl_v1.2.165.dll</HintPath>
+ </Reference>
+ <Reference Include="Google.IOSResolver_v1.2.165">
+ <HintPath>/Users/sdaramwar/Documents/Study/GitHub/Unity_Mario/Assets/ExternalDependencyManager/Editor/Google.IOSResolver_v1.2.165.dll</HintPath>
+ </Reference>
+ <Reference Include="Google.JarResolver_v1.2.165">
+ <HintPath>/Users/sdaramwar/Documents/Study/GitHub/Unity_Mario/Assets/ExternalDependencyManager/Editor/Google.JarResolver_v1.2.165.dll</HintPath>
+ </Reference>
+ <Reference Include="Google.PackageManagerResolver_v1.2.165">
+ <HintPath>/Users/sdaramwar/Documents/Study/GitHub/Unity_Mario/Assets/ExternalDependencyManager/Editor/Google.PackageManagerResolver_v1.2.165.dll</HintPath>
+ </Reference>
+ <Reference Include="GoogleMobileAds.Unity">
+ <HintPath>/Users/sdaramwar/Documents/Study/GitHub/Unity_Mario/Assets/GoogleMobileAds/GoogleMobileAds.Unity.dll</HintPath>
+ </Reference>
+ <Reference Include="GoogleMobileAds.Core">
+ <HintPath>/Users/sdaramwar/Documents/Study/GitHub/Unity_Mario/Assets/GoogleMobileAds/GoogleMobileAds.Core.dll</HintPath>
+ </Reference>
+ <Reference Include="GoogleMobileAds.Common">
+ <HintPath>/Users/sdaramwar/Documents/Study/GitHub/Unity_Mario/Assets/GoogleMobileAds/GoogleMobileAds.Common.dll</HintPath>
+ </Reference>
+ <Reference Include="GoogleMobileAds">
+ <HintPath>/Users/sdaramwar/Documents/Study/GitHub/Unity_Mario/Assets/GoogleMobileAds/GoogleMobileAds.dll</HintPath>
  </Reference>
  <Reference Include="nunit.framework">
  <HintPath>/Users/sdaramwar/Documents/Study/GitHub/Unity_Mario/Library/PackageCache/com.unity.ext.nunit@1.0.6/net35/unity-custom/nunit.framework.dll</HintPath>
@@ -736,6 +764,10 @@
     <ProjectReference Include="Assembly-CSharp-Editor-firstpass.csproj">
       <Project>{DCC4B552-28E7-0953-F356-B13B02B5F085}</Project>
       <Name>Assembly-CSharp-Editor-firstpass</Name>
+    </ProjectReference>
+    <ProjectReference Include="GoogleMobileAds.Editor.csproj">
+      <Project>{5BDBAC9D-6A97-78AE-2802-1D9501B10069}</Project>
+      <Name>GoogleMobileAds.Editor</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

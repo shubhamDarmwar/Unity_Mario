@@ -19,9 +19,10 @@ public class CoinScript : MonoBehaviour
     }
 
     void OnTriggerEnter2D(Collider2D other) {
-    	// Debug.Log("Triggered");
-    	Destroy(gameObject);
-    	score = score + 10;
-    	Debug.Log(score);
+    	if (other.tag == "PlayerTag") {
+            Destroy(gameObject);
+            score = score + 10;
+            Debug.Log(score);
+        }
     }
 }

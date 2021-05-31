@@ -2,6 +2,16 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum Clip {
+    jump,
+    coin,
+    blast,
+    checkPoint,
+    gameOver,
+    stoneCollected,
+    ghostDied
+}
+
 public class AudioController : MonoBehaviour
 {
 	public AudioClip coinAudioClip;
@@ -9,6 +19,8 @@ public class AudioController : MonoBehaviour
     public AudioClip jumpAudioClip;
     public AudioClip checkPointAudioClip;
     public AudioClip gameOverClip;
+    public AudioClip stoneCollected;
+    public AudioClip ghostDied;
 
 	private AudioSource audioSource;
     // Start is called before the first frame update
@@ -38,15 +50,20 @@ public class AudioController : MonoBehaviour
                 Debug.Log("Game over");
                 audioClip = gameOverClip;
             break;
+            case Clip.stoneCollected:
+                audioClip = stoneCollected;
+            break;
+            case Clip.ghostDied:
+                audioClip = ghostDied;
+            break;
     		default:
     			audioClip = blastAudioClip;
     		break;
     	}
-    if (audioClip == null) {
-    		Debug.Log("Clip not found");
-    	}
+        if (audioClip == null) {
+        	Debug.Log("Clip not found");
+        }
     	StartCoroutine(playClipCoroutine(audioClip));
-
     }
 
 	IEnumerator playClipCoroutine(AudioClip clip) {

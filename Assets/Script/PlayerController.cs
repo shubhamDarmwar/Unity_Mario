@@ -4,13 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityStandardAssets.CrossPlatformInput;
 
-public enum Clip {
-    jump,
-    coin,
-    blast,
-    checkPoint,
-    gameOver
-}
+
 
 
 public class PlayerController : MonoBehaviour
@@ -83,8 +77,6 @@ public class PlayerController : MonoBehaviour
         if (CrossPlatformInputManager.GetButtonDown("Jump") && isTouchingGround) {
         	rigidBody.velocity = new Vector2(rigidBody.velocity.x, jumpSpeed);
             audioController.playClip(Clip.jump);
-
-            // cap.transform.Rotate (0, 0, 200);
         }
         if (isTouchingGround) {
         	cap.transform.eulerAngles = Vector3.forward;
@@ -125,7 +117,7 @@ public class PlayerController : MonoBehaviour
             audioController.playClip(Clip.blast);
         } else if (other.tag == "LevelEnd") {
             levelManager.changeLevel();
-            audioController.playClip(Clip.gameOver);
+            audioController.playClip(Clip.checkPoint);
         } else if (other.tag == "FireBall") {
             respawn();
         } else if (other.tag == "Ghost") {
@@ -147,6 +139,7 @@ void OnCollisionEnter2D(Collision2D other) {
         } else if (other.gameObject.tag == "Stone") {
             Destroy(other.gameObject);
             stones += 1;
+            audioController.playClip(Clip.stoneCollected);
         }
         
         

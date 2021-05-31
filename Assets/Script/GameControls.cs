@@ -2,13 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class GameControls : MonoBehaviour
 {
     public GameObject pauseMenuView;
     public GameObject gameControlsView;
     public GameObject stone;
-    private bool paused = false;
+    public Button soundButton;
+
     private bool mute = false;
     private static LevelManager levelManager;
 
@@ -29,9 +31,11 @@ public class GameControls : MonoBehaviour
     	if (mute) {
     		GameObject.FindGameObjectsWithTag("AudioSource")[0].GetComponent<AudioSource>().volume = 1;
     		mute = false;
+            soundButton.GetComponentsInChildren<TMPro.TextMeshProUGUI>()[0].text = "Sound: ON";
     	} else {
     		GameObject.FindGameObjectsWithTag("AudioSource")[0].GetComponent<AudioSource>().volume = 0;
     		mute = true;
+            soundButton.GetComponentsInChildren<TMPro.TextMeshProUGUI>()[0].text = "Sound: OFF";
     	}
     	
     }

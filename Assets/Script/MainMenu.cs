@@ -31,16 +31,13 @@ public class MainMenu : MonoBehaviour
 	}
 
     public void playGame() {
-    	// SceneManager.LoadScene(4);
-    	// levelManager.changeLevel();
-        // levelManager.startGame();
         mainMenuView.SetActive(false);
         levelMenuView.SetActive(true);
 
         PlayerProgress data = SaveSystem.loadPlayer();
-        // int level = data.level;
-        int level = 5;
-        Debug.Log("Unlocked level" + level.ToString());
+        int level = data.level;
+        // int level = 5;
+        // Debug.Log("Unlocked level" + level.ToString());
         for(int i = 0; i < levelButtons.Length; i++) {
             if (i < level) {
                 levelButtons[i].interactable = true;

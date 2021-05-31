@@ -56,7 +56,6 @@
   </ItemGroup>
   <ItemGroup>
      <Compile Include="Assets\EffectExamples\Misc Effects\Scripts\SpawnEffect.cs" />
-     <Compile Include="Assets\Script\Ads.cs" />
      <Compile Include="Assets\Script\AudioController.cs" />
      <Compile Include="Assets\Script\AutoMove.cs" />
      <Compile Include="Assets\Script\Bomb.cs" />
@@ -64,6 +63,7 @@
      <Compile Include="Assets\Script\Checkpoint.cs" />
      <Compile Include="Assets\Script\CoinScript.cs" />
      <Compile Include="Assets\Script\GameControls.cs" />
+     <Compile Include="Assets\Script\GoogleAds.cs" />
      <Compile Include="Assets\Script\Ladybird.cs" />
      <Compile Include="Assets\Script\LevelManager.cs" />
      <Compile Include="Assets\Script\MainMenu.cs" />
@@ -741,6 +741,9 @@
  </Reference>
  <Reference Include="UnityEditor.UI">
  <HintPath>/Users/sdaramwar/Documents/Study/GitHub/Unity_Mario/Library/ScriptAssemblies/UnityEditor.UI.dll</HintPath>
+ </Reference>
+ <Reference Include="com.unity.quicksearch">
+ <HintPath>/Users/sdaramwar/Documents/Study/GitHub/Unity_Mario/Library/ScriptAssemblies/com.unity.quicksearch.dll</HintPath>
  </Reference>
   </ItemGroup>
   <ItemGroup>

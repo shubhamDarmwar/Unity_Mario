@@ -11,6 +11,7 @@ public class MainMenu : MonoBehaviour
 	public Button[] levelButtons;
     private static LevelManager levelManager;
     public GameObject player;
+    public bool addLoaded = false;
 
 	void Start() {
 		levelManager = FindObjectOfType<LevelManager>();
@@ -30,6 +31,19 @@ public class MainMenu : MonoBehaviour
 
 	}
 
+void FixedUpdate() {
+    if (addLoaded){
+        for(int i = 0; i < levelButtons.Length; i++) {
+        levelButtons[i].GetComponentsInChildren<TMPro.TextMeshProUGUI>()[0].text = "Yes";
+    }
+    } else {
+        for(int i = 0; i < levelButtons.Length; i++) {
+        
+        levelButtons[i].GetComponentsInChildren<TMPro.TextMeshProUGUI>()[0].text = "no";
+    }
+    }
+    
+}
     public void playGame() {
         mainMenuView.SetActive(false);
         levelMenuView.SetActive(true);

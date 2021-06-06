@@ -4,27 +4,52 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
+public enum GameControlsChild {
+    pauseMenuView,
+    gameControlsView,
+    adCheckpointView,
+    addStoneView
+}
+
+public enum AdRequestReason {
+    addStone,
+    loadCheckpoint
+}
+
 public class GameControls : MonoBehaviour
 {
     public GameObject pauseMenuView;
     public GameObject gameControlsView;
+    public GameObject adCheckpointView;
+    public GameObject addStoneView;
     public GameObject stone;
     public Button soundButton;
 
     private bool mute = false;
     private static LevelManager levelManager;
-
+    private AdRequestReason adRequestReason; 
 
     void Start() {
-        gameControlsView.SetActive(true);
-        pauseMenuView.SetActive(false);
+        showChildView(GameControlsChild.gameControlsView);
         levelManager = FindObjectOfType<LevelManager>();
+        GoogleAds.adFineshedDelegate = adFinshedPlaying;
+    }
+
+
+    public void showAdsView(bool isTrue) {
+        showChildView(GameControlsChild.adCheckpointView);
+    }
+
+    public void showChildView(GameControlsChild child) {
+        gameControlsView.SetActive(child == GameControlsChild.gameControlsView);
+        pauseMenuView.SetActive(child == GameControlsChild.pauseMenuView);
+        adCheckpointView.SetActive(child == GameControlsChild.adCheckpointView);
+        addStoneView.SetActive(child == GameControlsChild.addStoneView);
+        pauseGame(child != GameControlsChild.gameControlsView);
     }
 
     public void pauseClicked() {
-    	Time.timeScale = 0;
-        gameControlsView.SetActive(false);
-        pauseMenuView.SetActive(true);
+        showChildView(GameControlsChild.pauseMenuView);
     }
 
     public void soundButtonClicked() {
@@ -40,30 +65,79 @@ public class GameControls : MonoBehaviour
     	
     }
 
+    public void pauseGame(bool isTrue) {
+        if (isTrue) {
+            Time.timeScale = 0;
+        } else {
+            Time.timeScale = 1;
+        }
+    }
+
     public void mainMenuClicked() {
-        Time.timeScale = 1;
+        pauseGame(false);
         levelManager.loadScene(0);
     }
 
     public void restartButtonClicked() {
-        Time.timeScale = 1;
-        gameControlsView.SetActive(true);
-        pauseMenuView.SetActive(false);
+        showChildView(GameControlsChild.gameControlsView);
         levelManager.loadScene(levelManager.currentLevel);
     }
 
     public void resumeButtonClicked() {
-        Time.timeScale = 1;
-        gameControlsView.SetActive(true);
-        pauseMenuView.SetActive(false);
+        showChildView(GameControlsChild.gameControlsView);
+    }
+
+    public void showAddStoneButtonClicked() {
+        showChildView(GameControlsChild.addStoneView);
+    }
+
+    public void addStoneContinueClicked() {
+        showChildView(GameControlsChild.gameControlsView);
+        GoogleAds.showRewardedAd();
+        adRequestReason = AdRequestReason.addStone;
+    }
+
+    public void addStoneCancelClicked() {
+        showChildView(GameControlsChild.gameControlsView);
     }
 
     public void fireButtonClicked() {
-        GameObject player = GameObject.FindGameObjectWithTag("PlayerTag");
+        PlayerController player = GameObject.FindObjectOfType<PlayerController>();
         if (player != null) {
-
-            Throw(player.transform.position, player.transform.localScale.x);
+            if(player.stones > 0) {
+                Throw(player.transform.position, player.transform.localScale.x);
+            } else {
+                showChildView(GameControlsChild.addStoneView);
+            }
         }
+    }
+
+    public void adRestartLevel() {
+        showChildView(GameControlsChild.gameControlsView);
+        levelManager.restartLevel();
+    }
+
+    public void adResumeFromLastCheckpoint() {
+        // showChildView(GameControlsChild.gameControlsView);
+        GoogleAds.showRewardedAd();
+        adRequestReason = AdRequestReason.loadCheckpoint;
+    }
+
+    public void adFinshedPlaying(bool rewarded) {
+        if (adRequestReason == AdRequestReason.loadCheckpoint) {
+            if (!rewarded) {
+                levelManager.restartLevel();
+            }
+        } 
+        else if (adRequestReason == AdRequestReason.addStone) {
+            if(rewarded) {
+                PlayerController player = GameObject.FindObjectOfType<PlayerController>();
+                if (player != null) {
+                    player.stones += 3;
+                }
+            }
+        }
+        showChildView(GameControlsChild.gameControlsView);
     }
 
     public void Throw(Vector3 location, float direction)

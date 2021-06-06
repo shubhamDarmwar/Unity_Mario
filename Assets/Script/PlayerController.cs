@@ -25,7 +25,7 @@ public class PlayerController : MonoBehaviour
 
     public Vector3 respawnPoint;
     public static LevelManager levelManager;
-
+    
     //Score
     public Text scoreText;
     public int score = 0;
@@ -39,7 +39,7 @@ public class PlayerController : MonoBehaviour
     public AudioClip checkPointAudioClip;
 
 	private Transform originalCapTransform;
-    // public GameObject stone;
+    private GameControls gameControls;
 
     // Start is called before the first frame update
     void Start()
@@ -52,7 +52,6 @@ public class PlayerController : MonoBehaviour
         levelManager = FindObjectOfType<LevelManager>();
         audioController = FindObjectOfType<AudioController>();
         loadPlayer();
-        // originalCapTransform = cap.transform;
     }
 
     // Update is called once per frame
@@ -91,6 +90,10 @@ public class PlayerController : MonoBehaviour
     }
 
     void FixedUpdate() {
+        if (gameControls == null){
+            gameControls = FindObjectOfType<GameControls>();
+        }
+        
         if (GameObject.FindGameObjectsWithTag("ScoreText").Length > 0){
             GameObject.FindGameObjectsWithTag("ScoreText")[0].GetComponent<TMPro.TextMeshProUGUI>().text = "Score: " + score.ToString();
         }
@@ -101,69 +104,69 @@ public class PlayerController : MonoBehaviour
         
     }
 
+    public void resetPlayer() {
+        stones = 3;
+        score =0;
+    }
     void OnTriggerEnter2D(Collider2D other) {
         
     	if (other.tag == "FallDetector") {
-            respawn();
+            accident();
+            audioController.playClip(Clip.gameOver);
     	} else if (other.tag == "Checkpoint") {
-            audioController.playClip(Clip.checkPoint);
+            levelManager.checkpointReached = true;
+            
+            if (!other.gameObject.GetComponent<Checkpoint>().isChecked) {
+                audioController.playClip(Clip.checkPoint);
+            }
+            
             
             respawnPoint = other.transform.position;
         } else if (other.tag == "Coin") {
         	score += 10;
             audioController.playClip(Clip.coin);
         } else if (other.tag == "Bomb") {
-        	levelManager.respawn();
+        	accident();
             audioController.playClip(Clip.blast);
         } else if (other.tag == "LevelEnd") {
             levelManager.changeLevel();
             audioController.playClip(Clip.checkPoint);
         } else if (other.tag == "FireBall") {
-            respawn();
+            accident();
+            audioController.playClip(Clip.gameOver);
         } else if (other.tag == "Ghost") {
-            respawn();
+            accident();
+            audioController.playClip(Clip.gameOver);
         } else if (other.tag == "Saw") {
-            respawn();
+            accident();
+            audioController.playClip(Clip.gameOver);
         }
     }
 
-void respawn() {
+void accident() {
     levelManager.respawn();
-    audioController.playClip(Clip.gameOver);
+
 }
 
 void OnCollisionEnter2D(Collision2D other) {
-        if (other.gameObject.tag == "Ladybird") {
-            levelManager.respawn();
-            respawn();
-        } else if (other.gameObject.tag == "Stone") {
+    if (other.gameObject.tag == "Ladybird") {
+        accident();
+        audioController.playClip(Clip.gameOver);
+    } else if (other.gameObject.tag == "Stone") {
+        if (!other.gameObject.GetComponent<Stone>().thrown) {
             Destroy(other.gameObject);
             stones += 1;
             audioController.playClip(Clip.stoneCollected);
         }
         
-        
     }
+        
+}
     
 
-    void loadPlayer() {
-        PlayerProgress data = SaveSystem.loadPlayer();
-        // int level = data.level;
-        // levelManager.currentLevel = level;
-        score = data.score;
-    }
+void loadPlayer() {
+    PlayerProgress data = SaveSystem.loadPlayer();
+    score = data.score;
+}
 
-    // public void Throw(Vector3 location, float direction)
-    //  {
-    //     stone = Instantiate(stone);
-    //     stone.transform.position = new Vector3(location.x + 1,location.y, location.z);
-
-    //     Rigidbody2D rigidBody = stone.GetComponent<Rigidbody2D>() ;
-    //     float dir = 1;
-    //     if (direction < 0) {
-    //         dir = -1;
-    //     }
-    //     rigidBody.velocity = new Vector2(dir * 10f, 0);
-    //     Debug.Log(transform.localScale.x);
-    //  }
 }

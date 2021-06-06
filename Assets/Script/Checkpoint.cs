@@ -6,7 +6,7 @@ public class Checkpoint : MonoBehaviour
 {
 	public Sprite sprite1; // Drag your first sprite here
 	public Sprite sprite2; // Drag your second sprite here
-
+	public bool isChecked = false;
 	private SpriteRenderer spriteRenderer; 
 
 	void Start ()
@@ -17,6 +17,7 @@ public class Checkpoint : MonoBehaviour
 	}
 
     void OnTriggerEnter2D(Collider2D other) {
+    	isChecked = true;
     	spriteRenderer.sprite = sprite2;
     }
 }

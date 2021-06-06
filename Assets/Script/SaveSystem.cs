@@ -28,7 +28,7 @@ public static class SaveSystem
 		PlayerProgress data = new PlayerProgress(newUnlockedLevel, newScore);
 		formatter.Serialize(stream, data);
 		stream.Close();
-		Debug.Log("Saved player");
+		// Debug.Log("Saved player");
 	}
 
 	public static PlayerProgress loadPlayer() {
@@ -39,7 +39,7 @@ public static class SaveSystem
 
 			PlayerProgress data = formatter.Deserialize(stream) as PlayerProgress;
 			stream.Close();
-			Debug.Log("load player");
+			// Debug.Log("load player");
 
 			unlockedLevel = data.level;
 			return data; 

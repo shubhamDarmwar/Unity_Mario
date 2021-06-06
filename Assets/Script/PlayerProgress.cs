@@ -12,7 +12,7 @@ public class PlayerProgress
 
     public PlayerProgress (int level, int score) 
     {
-    	Debug.Log("Saved level = " + level.ToString());
+    	// Debug.Log("Saved level = " + level.ToString());
     	// if (this.level < level) {
     		this.level = level;
             this.score = score;

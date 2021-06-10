@@ -32,15 +32,8 @@ public class MainMenu : MonoBehaviour
 	}
 
 void FixedUpdate() {
-    if (addLoaded){
-        for(int i = 0; i < levelButtons.Length; i++) {
-        levelButtons[i].GetComponentsInChildren<TMPro.TextMeshProUGUI>()[0].text = "Yes";
-    }
-    } else {
-        for(int i = 0; i < levelButtons.Length; i++) {
-        
-        levelButtons[i].GetComponentsInChildren<TMPro.TextMeshProUGUI>()[0].text = "no";
-    }
+    for(int i = 0; i < levelButtons.Length; i++) {
+        levelButtons[i].GetComponentsInChildren<TMPro.TextMeshProUGUI>()[0].text = "Level " + (i + 1).ToString();
     }
     
 }
@@ -49,8 +42,8 @@ void FixedUpdate() {
         levelMenuView.SetActive(true);
 
         PlayerProgress data = SaveSystem.loadPlayer();
-        int level = data.level;
-        // int level = 5;
+        // int level = data.level;
+        int level = 6;
         // Debug.Log("Unlocked level" + level.ToString());
         for(int i = 0; i < levelButtons.Length; i++) {
             if (i < level) {

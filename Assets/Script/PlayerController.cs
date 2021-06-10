@@ -140,7 +140,7 @@ public class PlayerController : MonoBehaviour
         } else if (other.tag == "Saw") {
             accident();
             audioController.playClip(Clip.gameOver);
-        }
+        }   
     }
 
 void accident() {

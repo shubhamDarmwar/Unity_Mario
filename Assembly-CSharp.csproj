@@ -56,6 +56,9 @@
   </ItemGroup>
   <ItemGroup>
      <Compile Include="Assets\EffectExamples\Misc Effects\Scripts\SpawnEffect.cs" />
+     <Compile Include="Assets\MoverTile.cs" />
+     <Compile Include="Assets\MoverTilePickup_end.cs" />
+     <Compile Include="Assets\MoverTilePickup_start.cs" />
      <Compile Include="Assets\Script\AudioController.cs" />
      <Compile Include="Assets\Script\AutoMove.cs" />
      <Compile Include="Assets\Script\Bomb.cs" />

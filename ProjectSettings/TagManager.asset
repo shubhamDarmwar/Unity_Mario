@@ -21,6 +21,8 @@ TagManager:
   - Stone
   - Ladybird
   - StoneCountText
+  - MoverPickUp_start
+  - MoverPickUp_end
   layers:
   - Default
   - TransparentFX

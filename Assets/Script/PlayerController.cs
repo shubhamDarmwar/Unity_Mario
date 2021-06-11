@@ -122,6 +122,7 @@ public class PlayerController : MonoBehaviour
             
             
             respawnPoint = other.transform.position;
+            GoogleAds.loadAdsIfNotLoaded();
         } else if (other.tag == "Coin") {
         	score += 10;
             audioController.playClip(Clip.coin);

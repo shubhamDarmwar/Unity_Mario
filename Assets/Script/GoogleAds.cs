@@ -46,29 +46,13 @@ public static void addInterstitialAdHandles() {
 }
 public static void requestInterstitial()
 {
-    // #if UNITY_ANDROID
-    //     string adUnitId = "ca-app-pub-5428825449568419/3580465161"; 
-    //     // string adUnitId = "ca-app-pub-3940256099942544/1033173712";
-    //     //app id : ca-app-pub-5428825449568419~5474031146
-    // // #elif UNITY_IPHONE
-    // //     string adUnitId = "ca-app-pub-3940256099942544/4411468910";
-    // #else
-    //     string adUnitId = "unexpected_platform";
-    // #endif
-
-    // Initialize an InterstitialAd.
-    // interstitial = new InterstitialAd(adUnitId);
-
-    // Create an empty ad request.
+    
     AdRequest request = new AdRequest.Builder().Build();
+    interstitial.LoadAd(request);
+}
 
-
-
-// Called when the ad click caused the user to leave the application.
-// interstitial.OnAdLeavingApplication += handleOnAdLeavingApplication;
-
-// Load the interstitial with the request.
-interstitial.LoadAd(request);
+public static bool isInterstitialAdLoaded() {
+    return interstitial.IsLoaded();
 }
 
 public static void showinterstitialAdd()
@@ -76,14 +60,12 @@ public static void showinterstitialAdd()
   	if (interstitial.IsLoaded()) {
     	interstitial.Show();
   	}
-	requestInterstitial();
-
 }
 
 public static void handleOnAdLoaded(object sender, EventArgs args)
 {
-    // MonoBehaviour.print("HandleAdLoaded event received");
-    FindObjectOfType<MainMenu>().addLoaded = true;
+    MonoBehaviour.print("HandleAdLoaded event received");
+    // FindObjectOfType<MainMenu>().addLoaded = true;
 }
 
 public static void handleOnAdFailedToLoad(object sender, AdFailedToLoadEventArgs args)
@@ -100,6 +82,7 @@ public static void handleOnAdClosed(object sender, EventArgs args)
 {
     MonoBehaviour.print("HandleAdClosed event received");
     levelManager.pauseGame(false);
+
 }
 
 public static void handleOnAdFailedToLoad1(object sender, AdFailedToLoadEventArgs args)
@@ -116,13 +99,16 @@ public static void requestRewarded()
 
 }
 
+public static bool isRewardedAdLoaded() {
+    return rewardedAd.IsLoaded();
+}
+
 public static void showRewardedAd()
 {
   	if (rewardedAd.IsLoaded()) {
     	rewardedAd.Show();
   	}
-	requestRewarded();
-
+    GoogleAds.loadAdsIfNotLoaded();
 }
 
 public static void addRewardAdHandles() {
@@ -189,6 +175,15 @@ public static void handleUserEarnedReward(object sender, Reward args)
 
 }
 
+public static void loadAdsIfNotLoaded() {
+    if (!isRewardedAdLoaded()){
+        requestRewarded();
+    }
+    if (!isInterstitialAdLoaded()){
+        requestInterstitial();
+    }
+    
+}
 
 
 }

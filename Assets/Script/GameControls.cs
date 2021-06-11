@@ -3,12 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using System;
 
 public enum GameControlsChild {
     pauseMenuView,
     gameControlsView,
     adCheckpointView,
-    addStoneView
+    addStoneView,
+    noInternetView
 }
 
 public enum AdRequestReason {
@@ -22,21 +24,33 @@ public class GameControls : MonoBehaviour
     public GameObject gameControlsView;
     public GameObject adCheckpointView;
     public GameObject addStoneView;
+    public GameObject noInternetView;
     public GameObject stone;
     public Button soundButton;
 
     private bool mute = false;
     private static LevelManager levelManager;
     private AdRequestReason adRequestReason; 
+    private GameControlsChild oldView;
 
+    // private string adCheckpointText =  "Continue from last checkpoint?";
+    // private string noInternetText = "Please Turn On Internet !!!";
+    
     void Start() {
         showChildView(GameControlsChild.gameControlsView);
         levelManager = FindObjectOfType<LevelManager>();
         GoogleAds.adFineshedDelegate = adFinshedPlaying;
+
+        // GoogleAds.loadAdsIfNotLoaded();
     }
 
+    void FixedUpdate() {
+        // if(Time.time % 5f == 0) {
+            // GoogleAds.loadAdsIfNotLoaded();
+        // }
+    }
 
-    public void showAdsView(bool isTrue) {
+    void showAdsView(bool isTrue) {
         showChildView(GameControlsChild.adCheckpointView);
     }
 
@@ -45,8 +59,16 @@ public class GameControls : MonoBehaviour
         pauseMenuView.SetActive(child == GameControlsChild.pauseMenuView);
         adCheckpointView.SetActive(child == GameControlsChild.adCheckpointView);
         addStoneView.SetActive(child == GameControlsChild.addStoneView);
+        noInternetView.SetActive(child == GameControlsChild.noInternetView);
         pauseGame(child != GameControlsChild.gameControlsView);
+        if (child != GameControlsChild.noInternetView) {
+            oldView = child;
+        }
     }
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////
+
+    // Game control methods
 
     public void pauseClicked() {
         showChildView(GameControlsChild.pauseMenuView);
@@ -90,11 +112,23 @@ public class GameControls : MonoBehaviour
     public void showAddStoneButtonClicked() {
         showChildView(GameControlsChild.addStoneView);
     }
+///////////////////////////////////////////////////////////////////////////////////////////////////////
+    // No internet connection view method
+    public void noInternetViewCloseClicked() {
+        showChildView(oldView);
+    }
 
+///////////////////////////////////////////////////////////////////////////////////////////////////////
+    //// Add stones Ads view methods
     public void addStoneContinueClicked() {
-        showChildView(GameControlsChild.gameControlsView);
-        GoogleAds.showRewardedAd();
-        adRequestReason = AdRequestReason.addStone;
+        if (GoogleAds.isInterstitialAdLoaded()) {
+            showChildView(GameControlsChild.gameControlsView);
+            GoogleAds.showRewardedAd();
+            adRequestReason = AdRequestReason.addStone;
+        } else {
+            showChildView(GameControlsChild.noInternetView);
+        }
+        
     }
 
     public void addStoneCancelClicked() {
@@ -111,7 +145,8 @@ public class GameControls : MonoBehaviour
             }
         }
     }
-
+///////////////////////////////////////////////////////////////////////////////////////////////////////
+    // Checkpoint Ads methods
     public void adRestartLevel() {
         showChildView(GameControlsChild.gameControlsView);
         levelManager.restartLevel();
@@ -119,8 +154,13 @@ public class GameControls : MonoBehaviour
 
     public void adResumeFromLastCheckpoint() {
         // showChildView(GameControlsChild.gameControlsView);
-        GoogleAds.showRewardedAd();
-        adRequestReason = AdRequestReason.loadCheckpoint;
+        if (GoogleAds.isInterstitialAdLoaded()) {
+            GoogleAds.showRewardedAd();
+            adRequestReason = AdRequestReason.loadCheckpoint;
+        } else {
+            showChildView(GameControlsChild.noInternetView);
+        }
+        
     }
 
     public void adFinshedPlaying(bool rewarded) {
@@ -139,6 +179,9 @@ public class GameControls : MonoBehaviour
         }
         showChildView(GameControlsChild.gameControlsView);
     }
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////
+    //////   Throw Stone method
 
     public void Throw(Vector3 location, float direction)
      {
@@ -160,4 +203,5 @@ public class GameControls : MonoBehaviour
         }
         rigidBody.velocity = new Vector2(dir * 10f, 0);
      }
+///////////////////////////////////////////////////////////////////////////////////////////////////////
 }

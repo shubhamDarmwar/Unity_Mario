@@ -48,6 +48,7 @@ public class LevelManager : MonoBehaviour
     }
 
     public void respawn() {
+        GoogleAds.loadAdsIfNotLoaded();
     	StartCoroutine("respawnCoroutine");
     }
 
@@ -56,10 +57,9 @@ public class LevelManager : MonoBehaviour
     	yield return new WaitForSeconds(respawnDelay);
     	gamePlayer.transform.position =  gamePlayer.respawnPoint;
     	gamePlayer.gameObject.SetActive(true);
-        if (checkpointReached) {
+        if (checkpointReached && GoogleAds.isInterstitialAdLoaded()) {
             gameControls.showChildView(GameControlsChild.adCheckpointView);
             gameControls.pauseGame(true);
-            Debug.Log("showChildView checkpoint");
         } else {
             restartLevel();
         }
@@ -103,6 +103,7 @@ public void pauseGame(bool isTrue) {
     }
 
     public void loadScene(int index) {
+        GoogleAds.loadAdsIfNotLoaded();
     	checkpointReached = false;
     	transition.SetTrigger("LevelEnd");
         StartCoroutine(loadLevelCoroutine(index));

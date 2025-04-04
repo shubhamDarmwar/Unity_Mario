@@ -1,15 +1,23 @@
-# Unity Mario
+## Unity Mario
+
 This repository contains a Unity project for creating a Mario-style platformer game. It includes various assets, scripts, and configurations needed to build the game. The project is designed to be an example of how to implement 2D character animation, level design, and game mechanics in Unity.
 
-Features:
+### Features:
 
-2D Character Animation: Includes tools and runtime scripts to support the authoring of 2D animated characters.
+- **2D Character Animation:** Includes tools and runtime scripts to support the authoring of 2D animated characters.
 
-Skinning Editor: Available through the Sprite Editor Window module, it allows for the creation of bind poses, mesh tesselation, and weight painting.
-SpriteSkin Deformation: Runtime support for sprite skin deformation and 2D inverse kinematics (IK).
-Level Design: Contains various assets and scripts to design levels with obstacles, enemies, and collectibles.
+- **Level Design:** Contains various assets and scripts to design levels with obstacles, enemies, and collectibles.
 
-Game Mechanics: Implements basic game mechanics such as character movement, jumping, and collision detection.
+- **Game Mechanics:** Implements basic game mechanics such as character movement, jumping, and collision detection.
+
+### How to Use:
+
+1. Clone this repository to your local machine.
+2. Open the project in Unity (version 2020.1 or later recommended).
+3. Explore the `Assets` folder to find the different components of the game.
+4. Use the Unity Editor to modify and expand the game as needed.
+
+### Images:
 
 <table style="width:100%">
   <tr>
